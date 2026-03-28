@@ -1,68 +1,83 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solve
+class Solution
 {
 private:
     vector<int> preSum;
+    int MAX_LEN=-1;
 
 public:
-    Solve(const vector<int> &percentage)
-    {
-        preSum.resize(percentage.size() + 1);
-        preSum[0] = 0;
-        for (int i = 1; i < preSum.size(); i++)
+    Solution(vector<int>& percentage){
+        preSum.push_back(0);
+        for (int i = 1; i <= percentage.size(); i++)
         {
-            preSum[i] = preSum[i - 1] + percentage[i - 1];
+            preSum.push_back(percentage[i-1] + preSum[i-1]);
         }
+        
     }
 
-    vector<int> maxRange(int minAverageLost)
-    {
-        vector<int> result(2, 0);
-        for (int i = 1, j = 0; i < preSum.size();)
+    vector<vector<int>> find_max(){
+        vector<vector<int>> result;
+        for (int i = 0; i < preSum.size(); i++)
         {
-            double calAverageLost = (double)(preSum[i + 1] - preSum[j]) / (i - j + 1);
-            if (calAverageLost < minAverageLost)
+            for (int j = 0; j < i ; j++)
             {
-                if ((i - j + 1) > (result[1] - result[0]))
-                {
-                    result[1] = i + 1;
-                    result[0] = j;
+                if(preSum[i]-preSum[j]<=0){
+                    if(i-j>MAX_LEN){
+                        MAX_LEN = i-j;
+                        result.clear();
+                        result.push_back({j,i-1});
+                    }else if( i-j==MAX_LEN){
+                        result.push_back({j,i-1});
+                    }
+                    
                 }
-                i++;
             }
-            else
-            {
-                j++;
-            }
+            
         }
-
         return result;
-    }
+    } 
+    
 };
 
 int main()
 {
-    int minAverageLost = 0;
-    vector<int> percentage(100);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    cin >> minAverageLost;
-    cin.ignore();
-    string line;
-    getline(cin, line);
-    istringstream iss(line);
+    int minAverageLost;
 
-    int temp;
-    while (iss >> temp)
-    {
-        percentage.push_back(temp);
+    if(cin>>minAverageLost){
+        string dummy;
+        getline(cin,dummy);
+
+        string line;
+        getline(cin,line);
+        istringstream iss(line);
+        vector<int> percentage;
+        int temp;
+        while (iss >> temp)
+        {
+            percentage.push_back(temp-minAverageLost);
+        }
+        
+
+        Solution solu = Solution(percentage);
+        vector<vector<int>> result = solu.find_max();
+
+        if(result.empty()){
+            cout<<"NULL";
+        }else{
+            for (int i = 0; i < result.size(); i++)
+            {
+                cout<<result[i][0]<<"-"<<result[i][1]<<" ";
+            }
+
+        }
+                
     }
 
-    Solve sol = Solve(percentage);
-    vector<int> result = sol.maxRange(minAverageLost);
-
-    cout << result[0] << "-" << result[1];
 
     return 0;
 }
