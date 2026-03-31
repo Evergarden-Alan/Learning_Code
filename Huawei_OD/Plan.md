@@ -3,7 +3,7 @@
 ## 阶段一：基本功与滑窗双指针
 - [x] **Day 01：前缀和 (PrefixSum)** - 重点掌握“火柴盒”下标推导、目标值偏移法。
 - [x] **Day 02：滑动窗口 (SlidingWindow)** - 重点掌握同向双指针、窗口伸缩机制。
-- [ ] **Day 03：双指针与字符串 (TwoPointers_String)** - 重点掌握 `std::string` 进阶操作。
+- [x] **Day 03：双指针与字符串 (TwoPointers_String)** - 重点掌握 `std::string` 进阶操作。
 
 ## 阶段二：数据结构的魔法
 - [ ] **Day 04：优先队列 (PriorityQueue)** - 重点掌握大/小顶堆及自定义排序。

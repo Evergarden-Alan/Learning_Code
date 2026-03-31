@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution
+class Printer
 {
 private:
     vector<int> preSum;
     int MAX_LEN=-1;
 
 public:
-    Solution(vector<int>& percentage){
+    Printer(vector<int>& percentage){
         preSum.push_back(0);
         for (int i = 1; i <= percentage.size(); i++)
         {
@@ -63,7 +63,7 @@ int main()
         }
         
 
-        Solution solu = Solution(percentage);
+        Printer solu = Printer(percentage);
         vector<vector<int>> result = solu.find_max();
 
         if(result.empty()){

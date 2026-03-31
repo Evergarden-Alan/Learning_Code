@@ -5,14 +5,14 @@
     cout.tie(0);
 using namespace std;
 
-class Solution
+class Printer
 {
 private:
     int max_len = -1;
     vector<int> preSum;
 
 public:
-    Solution(const vector<int> &nums)
+    Printer(const vector<int> &nums)
     {
         preSum.push_back(0);
 
@@ -85,7 +85,7 @@ int main()
     int sum;
     cin >> sum;
 
-    Solution solu = Solution(nums);
+    Printer solu = Printer(nums);
 
     cout << solu.getMax_slideWindow(sum, nums);
 

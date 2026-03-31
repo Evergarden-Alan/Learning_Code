@@ -4,7 +4,7 @@ using namespace std;
 
 
 
-class Solution{
+class Printer{
 private:
     unordered_map<char,int> count;
     unordered_map<char,int> excess;
@@ -12,7 +12,7 @@ private:
     int N;
 
 public:
-    Solution(string opts,int n){
+    Printer(string opts,int n){
         N = n;
         optss = opts;
         for (int i = 0; i < opts.length(); i++)
@@ -63,7 +63,7 @@ int main(){
     string opts;
     getline(cin,opts);
 
-   Solution solu = Solution(opts,opts.length()); 
+   Printer solu = Printer(opts,opts.length()); 
 
    cout<<solu.min_continue_len();
     
