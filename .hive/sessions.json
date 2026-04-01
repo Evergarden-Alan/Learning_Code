@@ -1,0 +1,13 @@
+{
+  "sessions": [
+    {
+      "sessionId": "ses_2b6c38c61ffeOMfV7JJ9bzRLgC",
+      "startedAt": "2026-04-01T13:29:51.793Z",
+      "lastActiveAt": "2026-04-01T13:36:27.105Z",
+      "agent": "build",
+      "sessionKind": "unknown",
+      "baseAgent": "hive-master",
+      "directivePrompt": "<system-reminder>\nThe user sent the following message:\n怎么样才能让你识别docx类文件？\n\nPlease address this message and continue with your tasks.\n</system-reminder>"
+    }
+  ]
+}
