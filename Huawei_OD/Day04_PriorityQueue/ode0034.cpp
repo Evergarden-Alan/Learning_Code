@@ -37,17 +37,13 @@ public:
         vector<Site> result;
         if(K<=0) return result;
 
-        // vector<Site> temp;
-        while (!pq.empty()&&K)
+        while (!pq.empty() && result.size() < K)
         {
             Site top = pq.top();
-            // temp.push_back(top);
             pq.pop();
 
-            if(top.count!=countSite[top.domain]) continue;
+            if (top.count != countSite[top.domain]) continue;
             result.push_back(top);
-            // pq.push(top);  
-            K--;
         }
 
         for(auto const& entry:result){
@@ -56,6 +52,7 @@ public:
 
         return result;      
     }
+
 };
 
 
