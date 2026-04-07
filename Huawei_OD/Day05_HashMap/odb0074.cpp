@@ -59,9 +59,9 @@ public:
 
     void put(string filename, int filesize, int time)
     {
-        file new_file = filename_to_file[filename];
-        if (new_file.size == -1)
+        if (filename_to_file.count(filename)==0)
         { // 新节点，执行插入；重名则无任何操作
+            file new_file;
             new_file.filename = filename;
             new_file.size = filesize;
             new_file.get_time = time;
@@ -73,7 +73,7 @@ public:
             { // 没空间
                 while (isOverflow(filesize))
                 {
-                    clearCache();
+                    clearCache();//复杂度太高！！！！！！！！！！！！！！！！！！！！！1
                 }
                 filename_to_file[filename] = new_file;
             }
@@ -136,6 +136,7 @@ int main()
     }
 
     vector<string> result = solu.getresult();
+    if(result.size()==0) cout<<"NONE";
     for (size_t i = 0; i < result.size(); i++)
     {
         cout<<result[i];
