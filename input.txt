@@ -1,8 +1,0 @@
-50
-6
-put a 10
-put b 20
-get a
-get a
-get b
-put c 30
