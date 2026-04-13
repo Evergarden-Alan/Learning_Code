@@ -41,13 +41,23 @@ int main(){
     while (getline(namestream, name, ' '))
     {
         getline(datestream, date, ' ');
-        istringstream dateiss(date);
-        int year, month, day;
-        dateiss >> year >> month >> day;
+        // istringstream dateiss(date);
+        // Parse date string in format "year/month/day"
+        size_t pos1 = date.find('/');
+        size_t pos2 = date.find('/', pos1 + 1);
+        int year = stoi(date.substr(0, pos1));
+        int month = stoi(date.substr(pos1 + 1, pos2 - pos1 - 1));
+        int day = stoi(date.substr(pos2 + 1));
+        // dateiss >> year >> month >> day;
+        // if(workers.count(name)!=0) continue;
         workers[name] = worker{year, month, day};
     }
-    
-    
 
+    int result=0;
+    for(auto const & [name,worker] : workers){
+        if(worker.month==search_month) result++;
+    }
+
+    cout<<result;
     return 0;
 }
